@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="utf-8"> </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> </meta>
+    <meta name="description" content=""> </meta>
+    <meta name="author" content=""> </meta>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}" rel = "stylesheet"> </link>
+
+    <!-- Custom styles for this template -->
+  </head>
+    <body>
+    	<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">SI Kependudukan</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="/">Home</a></li>
+		      <li><a href="/penduduk/cari">Cari Data</a></li>
+      		<li><a href="/penduduk/tambah">Tambah Penduduk</a></li>
+      		<li><a href="/keluarga/tambah">Tambah Keluarga</a></li>
+		    </ul>
+		    <form class="navbar-form navbar-left">
+		      <div class="input-group">
+		        <input type="text" class="form-control" placeholder="Search"></input>
+		        <div class="input-group-btn">
+		          <button class="btn btn-default" type="submit">
+		            <i class="glyphicon glyphicon-search"></i>
+		          </button>
+		        </div>
+		      </div>
+		    </form>
+		  </div>
+		</nav>
+		
+		<!-- Title -->
+    	<div class="container-fluid">
+        	<h3 th:text="'Lihat Data Penduduk Berdasarkan Kecamatan di ' + ${kota.nama_kota.toLowerCase()}">Judul</h3>
+    	</div>
+		
+		<!-- Form -->
+    	<div class="container-fluid">
+        <form method="get" action="/penduduk/cari">
+
+            <div class="form-group">
+                <label for="kota"><h4>Kota/Kabupaten</h4></label>
+                <select class="form-control" name="kota" id="kota" required="true" >
+                        <option th:value="${kota.id}" th:text="${kota.nama_kota}">Kota yang mau dipilih</option>
+                </select>
+            </div>
+             <div class="form-group">
+                <label for="kota"><h4>Kecamatan</h4></label>
+                <select class="form-control" name="kecamatan" id="kecamatan" required="true" >
+                    <option value="" th:disabled="disabled" th:selected="selected">Pilih Kecamatan</option>
+                    <div th:each="kecamatan : ${kecamatan}">
+                        <option th:value="${kecamatan.id}" th:text="${kecamatan.nama_kecamatan}">Kecamatan yang mau dipilih</option>
+                    </div>
+                </select>
+            </div>
+
+            <br/>
+            <button type="submit" class="btn btn-default">Lihat</button>
+        </form>
+    </div>
+		
+</body>
+</html>

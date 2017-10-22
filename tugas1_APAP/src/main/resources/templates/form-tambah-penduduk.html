@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:th="http://www.thymeleaf.org">
+<head>
+ <meta charset="utf-8"> </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> </meta>
+    <meta name="description" content=""> </meta>
+    <meta name="author" content=""> </meta>
+	<title>Tambah Penduduk</title>
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}" rel = "stylesheet"> </link>
+
+    <!-- Custom styles for this template -->
+  </head>
+
+  <body>
+
+   <nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">SI Kependudukan</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/">Home</a></li>
+      <li><a href="/penduduk/cari">Cari Data</a></li>
+      <li><a href="/penduduk/tambah">Tambah Penduduk</a></li>
+      <li><a href="/keluarga/tambah">Tambah Keluarga</a></li>
+    </ul>
+    <form class="navbar-form navbar-left">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search"></input>
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit">
+            <i class="glyphicon glyphicon-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</nav>
+
+	<div class="container">
+		 <h2>Tambah Penduduk </h2>
+		
+		 <form action="/penduduk/tambah" th:object="${penduduk}" method="POST">
+		  <div class = "form-group">
+		   <label for="nama">Nama</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan nama" name="nama" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="tempat_lahir">Tempat Lahir</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan tempat lahir" name="tempat_lahir" />
+		  </div>
+		  <div class ="form-group">
+		   <label for="tanggal_lahir">Tanggal Lahir</label>
+		   <input type="date" class = "form-control" placeholder="Masukkan tanggal lahir" name="tanggal_lahir" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="jenis_kelamin">Jenis Kelamin</label>
+		    <input type="radio" name="jenis_kelamin" value="1" /> Perempuan
+		    <input type = "radio" name="jenis_kelamin" value="0" /> Laki-laki
+		  </div>
+		  <div class = "form-group">
+		   <label for="is_wni">WNI/WNA</label>
+		   <input type="radio" name="is_wni" value="0" /> WNI
+		   <input type="radio" name="is_wni" value="1" /> WNA
+		  </div>
+		  <div class = "form-group">
+		   <label for="id_keluarga">Id Keluarga</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan id keluarga" name="id_keluarga" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="agama">Agama</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan agama anda" name="agama" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="pekerjaan">Pekerjaan</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan pekerjaan anda" name="pekerjaan" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="status_perkawinan">Status Perkawinan</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan status perkawinan anda" name="status_perkawinan" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="status_dalam_keluarga">Status Dalam Keluarga</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan status anda dalam keluarga" name="status_dalam_keluarga" />
+		  </div>
+		  <div class = "form-group">
+		   <label for="golongan_darah">Golongan Darah</label>
+		   <input type="text" class = "form-control" placeholder="Masukkan golongan darah anda" name="golongan_darah" />
+		  </div>
+		<div>
+   			<button type="submit" name="action" value="save">Save</button>
+  		</div>
+ 	</form>
+ </div>
+
+</body>
+
+</html>

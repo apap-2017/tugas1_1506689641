@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    <meta charset="utf-8"> </meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> </meta>
+    <meta name="description" content=""> </meta>
+    <meta name="author" content=""> </meta>
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/webjars/bootstrap/3.3.1/css/bootstrap.min.css}" rel = "stylesheet"> </link>
+
+    <!-- Custom styles for this template -->
+  </head>
+    <body>
+    	<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="#">SI Kependudukan</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li class="active"><a href="/">Home</a></li>
+		      <li><a href="/penduduk/cari">Cari Data</a></li>
+      		<li><a href="/penduduk/tambah">Tambah Penduduk</a></li>
+      		<li><a href="/keluarga/tambah">Tambah Keluarga</a></li>
+		    </ul>
+		    <form class="navbar-form navbar-left">
+		      <div class="input-group">
+		        <input type="text" class="form-control" placeholder="Search"></input>
+		        <div class="input-group-btn">
+		          <button class="btn btn-default" type="submit">
+		            <i class="glyphicon glyphicon-search"></i>
+		          </button>
+		        </div>
+		      </div>
+		    </form>
+		  </div>
+		</nav>
+		<div class = "container">
+		
+    	<div class="container-fluid">
+        	<h3 th:text="'Lihat Data Penduduk Berdasarkan Kecamatan di ' + ${kota.nama_kota.toLowerCase()} + ', Kecamatan ' + ${kecamatan.nama_kecamatan.toLowerCase()} + ', Kelurahan ' + ${kelurahan.nama_kelurahan.toLowerCase()}"></h3>
+    	</div>
+    	
+    	<div class="container-fluid">
+
+        <!-- Table Hasil Pencarian -->
+        <table id="table_id" class="table table-hover table-responsive">
+            <thead>
+            <tr>
+                <th class="bold">NIK</th>
+                <th class="bold">Nama</th>
+                <th class="bold">Jenis Kelamin</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr th:each="penduduk : ${penduduk}">
+                    <td><a th:href="'/penduduk?nik=' + ${penduduk.nik}" th:text="${penduduk.nik}">NIK</a></td>
+                    <td th:text="${penduduk.nama}">Nama penduduk</td>
+                    <td th:text="${penduduk.jenis_kelamin}">Jenis Kelamin penduduk</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/jq-3.2.1/jq-3.2.1/dt-1.10.16/datatables.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready( function () {
+      $('#table_id').DataTable();
+    });
+  </script>
+
+</body>
+</html>
